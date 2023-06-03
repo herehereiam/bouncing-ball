@@ -10,6 +10,7 @@ function generate(event)
 document.addEventListener('DOMContentLoaded', function() 
 {
 	screen = document.querySelector('div');
-	document.addEventListener('mousedown', generate)
-})
+	document.addEventListener('mousedown', generate);
+});
 
+// TODO make radius, bounce sliders; gravity selector; colors

@@ -7,8 +7,8 @@ class Ball
 		this.radius = radius;
 		this.xAcc = 0; // in px per second
 		this.yAcc = 5000;
-		this.xVel = 5000;
-		this.yVel = -4000;
+		this.xVel = 0;
+		this.yVel = 0;
 		this.xPos = mouseXPos - this.radius;
 		this.yPos = mouseYPos - this.radius;
 		this.cor = 0.8 // bounciness
@@ -21,6 +21,14 @@ class Ball
 		this.element.style.top = this.yPos + 'px';
 
 		screen.appendChild(this.element);
+		document.addEventListener('mouseup', this.release.bind(this), {once: true});
+	}
+
+	release(event)
+	{
+		let power = 15;
+		this.xVel = power * ((this.xPos+this.radius) - event.clientX);
+		this.yVel = power * ((this.yPos+this.radius) - event.clientY);
 		setInterval(this.redraw.bind(this), this.frameLength*1000);
 	}
 
@@ -35,7 +43,7 @@ class Ball
 		this.element.style.top = this.yPos + 'px';
 	}
 
-	bounce() // TODO fix jitter at bottom
+	bounce() // TODO fix jitter at bottom; add friction
 	{
 		if (this.xPos < 0)
 		{
