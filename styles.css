@@ -18,13 +18,27 @@ body {
 }
 
 /* full-sized  container that fills up the page */
-div {
+#screen {
   height: 100%;
   width: 100%;
+}
 
-  /* example padding, font-size, background, etc */
-  padding: 10px;
-  font-size: 20px;
+#ui-container {
+  position: fixed;
+  z-index: 1;
+}
+
+.button-container {
+    width: 90px;
+    overflow-y: auto;
+}
+
+.button-container > button {
+    width: 20px;
+    height: 20px;
+    float: left;
+    background: lightgray;   
+    margin: 5px;
 }
 
 .circle {
