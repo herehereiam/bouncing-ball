@@ -1,4 +1,5 @@
-let power = 15;
+const power = 15;
+const minSpeedRetainedAfterFriction = 0.8;
 
 class Ball
 {
@@ -8,6 +9,7 @@ class Ball
 		this.frameLength = frameLength; // in seconds
 		this.radius = radius;
 		this.cor = cor // bounciness
+		this.speedRetainedAfterFriction = this.cor + minSpeedRetainedAfterFriction*(1-this.cor);
 		this.xAcc = xAcc; // in px per second
 		this.yAcc = yAcc;
 		this.xVel = 0;
@@ -60,22 +62,26 @@ class Ball
 		if (this.xPos < 0)
 		{
 			this.xVel = -this.xVel * this.cor;
+			this.yVel *= this.speedRetainedAfterFriction;
 			this.xPos = -this.xPos;
 		}
 		else if (this.xPos + 2*this.radius > screen.offsetWidth)
 		{
 			this.xVel = -this.xVel * this.cor;
+			this.yVel *= this.speedRetainedAfterFriction;
 			this.xPos = (screen.offsetWidth - ((this.xPos+2*this.radius)-screen.offsetWidth)) - 2*this.radius;
 		}
 
 		if (this.yPos < 0)
 		{
 			this.yVel = -this.yVel * this.cor;
+			this.xVel *= this.speedRetainedAfterFriction;
 			this.yPos = -this.yPos;
 		}
 		else if (this.yPos + 2*this.radius > screen.offsetHeight)
 		{
 			this.yVel = -this.yVel * this.cor;
+			this.xVel *= this.speedRetainedAfterFriction;
 			this.yPos = (screen.offsetHeight - ((this.yPos+2*this.radius)-screen.offsetHeight)) - 2*this.radius;
 		}
 	}

@@ -7,8 +7,8 @@ let yAcc = 5000;
 
 function generate(event)
 {
-	radius = document.querySelector('#radiusSlider').value * 0.5 * Math.min(screen.offsetWidth, screen.offsetHeight);
-	cor = document.querySelector('#corSlider').value;
+	radius = Number(document.querySelector('#radiusSlider').value) * 0.5 * Math.min(screen.offsetWidth, screen.offsetHeight);
+	cor = Number(document.querySelector('#corSlider').value);
 	ball = new Ball(1/fps, screen, radius, cor, xAcc, yAcc, event.clientX, event.clientY);
 }
 
@@ -18,4 +18,4 @@ document.addEventListener('DOMContentLoaded', function()
 	screen.addEventListener('mousedown', generate);
 });
 
-// TODO make radius, bounce sliders; gravity slider, selector; colors
+// TODO make gravity slider, selector; colors
