@@ -58,31 +58,35 @@ class Ball
 
 	bounce() // TODO fix jitter at bottom; add friction
 	{
-		if (this.xPos < 0)
+		let vals;
+		if (this.xPos < 0 || this.xPos + 2*this.radius > screen.offsetWidth)
 		{
-			let vals = this.calculateBounce(this.xAcc, this.xVel, this.xPos, "above", 0);
+			if (this.xPos < 0)
+			{
+				vals = this.calculateBounce(this.xAcc, this.xVel, this.xPos, "above", 0);
+				
+			}
+			else if (this.xPos + 2*this.radius > screen.offsetWidth)
+			{
+				vals = this.calculateBounce(this.xAcc, this.xVel, this.xPos, "below", screen.offsetWidth);
+			}
 			this.xVel = vals[0];
 			this.xPos = vals[1];
 			this.yVel *= this.speedRetainedAfterFriction;
 		}
-		else if (this.xPos + 2*this.radius > screen.offsetWidth)
-		{
-			let vals = this.calculateBounce(this.xAcc, this.xVel, this.xPos, "below", screen.offsetWidth);
-			this.xVel = vals[0];
-			this.xPos = vals[1];
-			this.yVel *= this.speedRetainedAfterFriction;
-		}
+
 			
-		if (this.yPos < 0)
+		if (this.yPos < 0 || this.yPos + 2*this.radius > screen.offsetHeight)
 		{
-			let vals = this.calculateBounce(this.yAcc, this.yVel, this.yPos, "above", 0);
-			this.yVel = vals[0];
-			this.yPos = vals[1];
-			this.xVel *= this.speedRetainedAfterFriction;
-		}
-		else if (this.yPos + 2*this.radius > screen.offsetHeight)
-		{
-			let vals = this.calculateBounce(this.yAcc, this.yVel, this.yPos, "below", screen.offsetHeight);
+			if (this.yPos < 0)
+			{
+				vals = this.calculateBounce(this.yAcc, this.yVel, this.yPos, "above", 0);
+				
+			}
+			else if (this.yPos + 2*this.radius > screen.offsetHeight)
+			{
+				vals = this.calculateBounce(this.yAcc, this.yVel, this.yPos, "below", screen.offsetHeight);
+			}
 			this.yVel = vals[0];
 			this.yPos = vals[1];
 			this.xVel *= this.speedRetainedAfterFriction;
