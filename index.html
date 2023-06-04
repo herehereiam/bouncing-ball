@@ -12,24 +12,24 @@
     <body>
         <div id="ui-container">
             <div>
-                <input id="radiusSlider" type="range" min="0.03" max="0.5" value="0.1" step="any">
+                <input id="radiusSlider" type="range" min="0.03" max="0.3" value="0.1" step="any">
             </div>
             <div>
-                <input id="corSlider" type="range" min="0.1" max="1" value="0.8" step="any">
+                <input id="corSlider" type="range" min="0.1" max="1" value="0.9" step="any">
             </div>
             <div>
-                <input type="range" min="0" max="1" value="0.8" step="any">
+                <input id="gravitySlider" type="range" min="500" max="20000" value="7500" step="any">
             </div>
             <div class="button-container">
-                <button type="button"></button>
-                <button type="button"></button>
-                <button type="button"></button>
-                <button id="left" type="button"></button>
-                <button type="button"></button>
-                <button type="button"></button>
-                <button type="button"></button>
-                <button type="button"></button>
-                <button type="button"></button>
+                <button type="button" id="upleft"></button>
+                <button type="button" id="up"></button>
+                <button type="button" id="upright"></button>
+                <button type="button" id="left"></button>
+                <button type="button" id="center"></button>
+                <button type="button" id="right"></button>
+                <button type="button" id="downleft"></button>
+                <button type="button" id="down"></button>
+                <button type="button" id="downright"></button>
             </div>
         </div>
         <div id="screen" oncontextmenu="return false;"></div>

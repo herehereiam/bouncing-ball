@@ -16,7 +16,9 @@ class Ball
 		this.yVel = 0;
 		this.xPos = mouseXPos - this.radius;
 		this.yPos = mouseYPos - this.radius;
+
 		// generate circle
+		this.element.object = this;
 		this.element.className = 'circle';
 		this.element.style.width = 2*this.radius + 'px';
 		this.element.style.height = 2*this.radius + 'px';
@@ -170,5 +172,11 @@ class Ball
 			vel: vel,
 			pos: pos
 		};
+	}
+
+	updateGravity(magnitude, accCoefficients)
+	{
+		this.xAcc = magnitude*accCoefficients[0];
+		this.yAcc = magnitude*accCoefficients[1];
 	}
 }
