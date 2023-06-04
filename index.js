@@ -15,7 +15,15 @@ function generate(event)
 document.addEventListener('DOMContentLoaded', function() 
 {
 	screen = document.querySelector('#screen');
-	screen.addEventListener('mousedown', generate);
+	//screen.addEventListener('mousedown', generate);
+
+	$(screen).mousedown(function(event)
+	{
+		if (event.which === 1)
+		{
+			generate(event);
+		}
+	});
 });
 
 // TODO make gravity slider, selector; colors

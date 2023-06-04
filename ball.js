@@ -34,7 +34,7 @@ class Ball
 		let yDiff = (this.yPos+this.radius) - event.clientY;
 
 		// randomize initial velocity if user clicked in place (e.g. on a touchscreen)
-		if (xDiff == 0 && yDiff == 0)
+		if (xDiff === 0 && yDiff === 0)
 		{
 			xDiff = this.xPos - (Math.random() * screen.offsetWidth);
 			yDiff = this.yPos - (Math.random() * screen.offsetHeight);
@@ -42,7 +42,16 @@ class Ball
 
 		this.xVel = power * xDiff;
 		this.yVel = power * yDiff;
-		setInterval(this.redraw.bind(this), this.frameLength*1000);
+		const animator = setInterval(this.redraw.bind(this), this.frameLength*1000);
+
+		$(this.element).mousedown(function(event)
+		{
+			if (event.which === 3)
+			{
+				this.element.remove();
+				clearInterval(animator);
+			}
+		}.bind(this));
 	}
 
 	redraw()
@@ -70,8 +79,8 @@ class Ball
 			{
 				vals = this.calculateBounce(this.xAcc, this.xVel, this.xPos, "below", screen.offsetWidth);
 			}
-			this.xVel = vals[0];
-			this.xPos = vals[1];
+			this.xVel = vals.vel;
+			this.xPos = vals.pos;
 			this.yVel *= this.speedRetainedAfterFriction;
 		}
 
@@ -87,15 +96,15 @@ class Ball
 			{
 				vals = this.calculateBounce(this.yAcc, this.yVel, this.yPos, "below", screen.offsetHeight);
 			}
-			this.yVel = vals[0];
-			this.yPos = vals[1];
+			this.yVel = vals.vel;
+			this.yPos = vals.pos;
 			this.xVel *= this.speedRetainedAfterFriction;
 		}
 	}
 
 	calculateBounce(acc, vel, pos, approach, boundary)
 	{
-		if (approach == "above")
+		if (approach === "above")
 		{
 			if (acc == 0)
 			{
@@ -128,7 +137,7 @@ class Ball
 		else
 		{
 			pos = pos + 2*this.radius - boundary;
-			if (acc == 0)
+			if (acc === 0)
 			{
 				vel = -vel * this.cor;
 				pos = -pos * this.cor;
@@ -157,6 +166,9 @@ class Ball
 			}
 			pos += boundary - 2*this.radius;
 		}
-		return [vel, pos];
+		return {
+			vel: vel,
+			pos: pos
+		};
 	}
 }
