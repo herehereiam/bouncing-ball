@@ -13,20 +13,9 @@ function generate(event)
 	ball = new Ball(1/fps, screen, radius, cor, gravity*accCoefficients[0], gravity*accCoefficients[1], event.clientX, event.clientY);
 }
 
-document.addEventListener('DOMContentLoaded', function() 
+function updateGravityDirection(button)
 {
-	screen = document.querySelector('#screen');
-	$(screen).mousedown(function(event)
-	{
-		if (event.which === 1)
-		{
-			generate(event);
-		}
-	});
-
-	$(':button').click(function()
-	{
-		switch ($(this).attr('id'))
+	switch ($(this).attr('id'))
 		{
 			case 'up':
 				accCoefficients = [0, -1];
@@ -61,7 +50,20 @@ document.addEventListener('DOMContentLoaded', function()
 		{
 			$(this).prop('object').updateGravity(gravity, accCoefficients);
 		});
+}
+
+document.addEventListener('DOMContentLoaded', function() 
+{
+	screen = document.querySelector('#screen');
+	$(screen).mousedown(function(event)
+	{
+		if (event.which === 1)
+		{
+			generate(event);
+		}
 	});
+
+	$(':button').on('click', updateGravityDirection);
 });
 
 // TODO make gravity slider, selector; colors
