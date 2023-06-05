@@ -71,4 +71,4 @@ document.addEventListener('DOMContentLoaded', function()
 	$('#gravitySlider').on('input', updateGravity);
 });
 
-// TODO make gravity slider, selector; colors
+// TODO make colors

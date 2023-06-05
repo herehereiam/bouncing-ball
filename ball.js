@@ -1,5 +1,6 @@
 const power = 15;
 const minSpeedRetainedAfterFriction = 0.8;
+const colors = ["7400b8","6930c3","5e60ce","5390d9","4ea8de","48bfe3","56cfe1","64dfdf","72efdd","80ffdb"];
 
 class Ball
 {
@@ -25,6 +26,7 @@ class Ball
 		this.element.style.position = 'absolute';
 		this.element.style.left = this.xPos + 'px';
 		this.element.style.top = this.yPos + 'px';
+		this.element.style.background = '#' + colors[Math.floor(Math.random()*colors.length)];
 		screen.appendChild(this.element);
 
 		document.addEventListener('mouseup', this.release.bind(this), {once: true});
@@ -67,7 +69,7 @@ class Ball
 		this.element.style.top = this.yPos + 'px';
 	}
 
-	bounce() // TODO fix jitter at bottom; add friction
+	bounce()
 	{
 		let vals;
 		if (this.xPos < 0 || this.xPos + 2*this.radius > screen.offsetWidth)
