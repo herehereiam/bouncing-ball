@@ -2,7 +2,7 @@ const fps = 60;
 let screen;
 let radius;
 let cor;
-let gravity = 5000;
+let gravity;
 let accCoefficients = [0, 1];
 
 function generate(event)
@@ -70,5 +70,3 @@ document.addEventListener('DOMContentLoaded', function()
 	$(':button').on('click', updateGravity);
 	$('#gravitySlider').on('input', updateGravity);
 });
-
-// TODO make colors
