@@ -1,4 +1,4 @@
-const power = 15;
+const power = 12;
 const minSpeedRetainedAfterFriction = 0.8;
 const colors = ["7400b8","6930c3","5e60ce","5390d9","4ea8de","48bfe3","56cfe1","64dfdf","72efdd","80ffdb"];
 

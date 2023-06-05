@@ -23,9 +23,10 @@ body {
   width: 100%;
 }
 
-#ui-container {
-  position: fixed;
+.ui-container {
   z-index: 1;
+  margin: 10px;
+  position: relative;
 }
 
 .button-container {
@@ -37,7 +38,6 @@ body {
     width: 30px;
     height: 30px;
     float: left;
-    background: lightgray;   
     margin: 0px;
 }
 
@@ -46,4 +46,9 @@ body {
   width: 25px;
   border-radius: 50%;
   display: inline-block;
+}
+
+p {
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
 }

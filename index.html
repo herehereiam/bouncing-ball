@@ -4,23 +4,33 @@
     <head>
         <meta charset="utf-8" />
         <title>Bouncing Ball</title>
+
         <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+
         <script src="jquery-3.7.0.min.js"></script>
         <script src="ball.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
-        <div id="ui-container">
+        <div class="ui-container" style="float: left;">
             <div>
+                <p>Radius:</p>
                 <input id="radiusSlider" type="range" min="0.03" max="0.3" value="0.1" step="any">
             </div>
             <div>
+                <p>Bounciness:</p>
                 <input id="corSlider" type="range" min="0.1" max="1" value="0.9" step="any">
             </div>
+        </div>
+        <div class="ui-container" style="float: right;">
             <div>
+                <p>Gravity:</p>
                 <input id="gravitySlider" type="range" min="500" max="30000" value="7500" step="any">
             </div>
-            <div class="button-container">
+            <div class="button-container" style="float: right;">
                 <button type="button" id="upleft"></button>
                 <button type="button" id="up"></button>
                 <button type="button" id="upright"></button>
