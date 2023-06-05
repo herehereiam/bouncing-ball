@@ -126,7 +126,7 @@ class Ball
 					console.log("ERROR", vel, Math.pow(vel, 2), acc, pos, 2*acc*pos);
 				}
 				*/
-				let timeClipping = (vel+Math.pow((Math.pow(vel, 2) - 2*acc*pos), 0.5))/acc;
+				let timeClipping = (vel+Math.abs(Math.pow((Math.pow(vel, 2) - 2*acc*pos), 0.5)))/acc;
 				vel = (-(vel - acc*timeClipping) * this.cor) + acc*timeClipping;
 				pos = vel*timeClipping - 0.5*acc*Math.pow(timeClipping, 2);
 				if (pos < 0)
@@ -157,7 +157,7 @@ class Ball
 					console.log("ERROR", vel, Math.pow(vel, 2), acc, pos, 2*acc*pos);
 				}
 				*/
-				let timeClipping = (vel-Math.pow(Math.abs((Math.pow(vel, 2) - 2*acc*pos)), 0.5))/acc;
+				let timeClipping = (vel-Math.abs(Math.pow(Math.abs((Math.pow(vel, 2) - 2*acc*pos)), 0.5)))/acc;
 				vel = (-(vel - acc*timeClipping) * this.cor) + acc*timeClipping;
 				pos = vel*timeClipping - 0.5*acc*Math.pow(timeClipping, 2);
 				if (pos > 0)

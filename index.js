@@ -13,10 +13,14 @@ function generate(event)
 	ball = new Ball(1/fps, screen, radius, cor, gravity*accCoefficients[0], gravity*accCoefficients[1], event.clientX, event.clientY);
 }
 
-function updateGravityDirection(button)
+function updateGravity()
 {
 	switch ($(this).attr('id'))
 		{
+			case 'gravitySlider':
+				console.log('help');
+				gravity = Number(document.querySelector('#gravitySlider').value);
+				break;
 			case 'up':
 				accCoefficients = [0, -1];
 				break;
@@ -63,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function()
 		}
 	});
 
-	$(':button').on('click', updateGravityDirection);
+	$(':button').on('click', updateGravity);
+	$('#gravitySlider').on('input', updateGravity);
 });
 
 // TODO make gravity slider, selector; colors
